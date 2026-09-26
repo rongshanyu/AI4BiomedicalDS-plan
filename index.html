@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="生物医学数据科学课程的主题、学习目标、课堂练习与作业。">
+<title>AI4BiomedicalDS 课程计划</title><link rel="stylesheet" href="style.css"></head>
+<body><a class="skip" href="#content">跳到正文</a>
+<header><p>AI4BiomedicalDS</p><h1>生物医学数据科学课程计划</h1>
+<p>课程主题、核心问题、课堂练习与作业</p><a href="plan.md" download>下载 Markdown</a></header>
+<div class="layout"><nav aria-label="课程目录"><h2>课程目录</h2><div class="toc">
+<ul>
+<li><a href="#1-ai-yu">第 1 讲：课程介绍与 AI 使用技巧 （yu)</a></li>
+<li><a href="#2-zhang">第 2 讲：变量类型与数据类型 (zhang)</a></li>
+<li><a href="#3-a-zhang">第 3 讲a：高维数据与维度灾难 （zhang)</a></li>
+<li><a href="#3-bpca-umap-zhang">第 3 讲b：降维、PCA 与 UMAP (zhang)</a></li>
+<li><a href="#4-ji">第 4 讲：统计检验与假设设计 (ji)</a></li>
+<li><a href="#5-ji">第 5讲：多重检验校正 (ji)</a></li>
+<li><a href="#6-liu">第 6 讲：机器学习基础与朴素贝叶斯 (liu)</a></li>
+<li><a href="#7lda-logistic-regression-liu">第 7讲：线性模型、LDA 与 Logistic Regression (liu)</a></li>
+<li><a href="#8-svm-margin-wang">第 8 讲：SVM 与 Margin (wang)</a></li>
+<li><a href="#9-bootstrapping-wang">第 9讲：集成学习与 Bootstrapping (wang)</a></li>
+<li><a href="#10-a-yu">第 10 讲a：欠过拟合的识别 (yu)</a></li>
+<li><a href="#10-b-yu">第 10 讲b：过拟合的对抗：正则化与验证策略 （yu)</a></li>
+<li><a href="#11-ji">第 11 讲：生物医学问题建模与课程项目汇报 (ji)</a></li>
+</ul>
+</div>
+</nav>
+<main id="content"><h2 id="1-ai-yu">第 1 讲：课程介绍与 AI 使用技巧 （yu)</h2>
+<p><strong>主题</strong> 科研训练中的 AI 工具使用：能做什么，不能做什么。</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>AI 可以如何帮助文献调研、代码实现、数据分析和写作？</li>
+<li>使用 AI 时有哪些风险？</li>
+<li>如何建立可复现的科研工作环境？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>课程目标、考核方式、最终项目说明</li>
+<li>AI 在科研中的典型用途：</li>
+<li>查找和总结文献</li>
+<li>解释统计和机器学习概念</li>
+<li>辅助写代码和 debug</li>
+<li>润色英文论文</li>
+<li>生成图表说明和结果解释</li>
+<li>AI 使用注意事项：</li>
+<li>不直接相信 AI 给出的文献和结论</li>
+<li>重要事实必须回到原始文献或官方文档核查</li>
+<li>不上传隐私数据、病人信息或未公开实验数据</li>
+<li>AI 生成代码必须自己运行、检查、理解</li>
+<li>AI 可以辅助写作，但不能替代科学判断</li>
+</ul>
+<p><strong>工具环境</strong></p>
+<ul>
+<li>VS Code</li>
+<li>Codex / ChatGPT</li>
+<li>DeepSeek / GLM / Kimi 等大模型工具</li>
+<li>Git / GitHub</li>
+<li>Python / Jupyter Notebook</li>
+<li>常用包：numpy, pandas, scipy, scikit-learn, matplotlib, seaborn</li>
+</ul>
+<p><strong>Checkpoint 检验</strong>学生需要完成：</p>
+<ol>
+<li>成功安装或打开 VS Code</li>
+<li>成功运行一个 Python notebook</li>
+<li>成功使用 Git 初始化或克隆一个仓库</li>
+<li>完成一次 commit</li>
+<li>使用 AI 工具解释一段代码，并指出其中可能的问题</li>
+<li>提交一页简短说明：自己准备用 AI 辅助哪些科研环节，以及如何避免误用</li>
+</ol>
+<p><strong>课堂练习</strong>给学生一个简单数据表，让他们用 AI 辅助完成：</p>
+<ul>
+<li>解释每一列变量含义</li>
+<li>写出 pandas 读取代码</li>
+<li>生成一个描述性统计表</li>
+<li>检查 AI 代码是否能真实运行</li>
+</ul>
+<hr />
+<h2 id="2-zhang">第 2 讲：变量类型与数据类型 (zhang)</h2>
+<p><strong>主题</strong> 理解数据，是所有统计分析和机器学习建模的起点。</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是变量？</li>
+<li>不同变量类型决定了哪些统计方法和模型可以使用？</li>
+<li>生物医学数据有哪些特殊性？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>变量类型：</li>
+<li>连续变量：年龄、血压、基因表达量</li>
+<li>离散变量：突变数量、细胞计数</li>
+<li>二分类变量：患病/未患病，阳性/阴性</li>
+<li>多分类变量：疾病亚型、细胞类型</li>
+<li>有序变量：疾病分期、评分等级</li>
+<li>时间变量：生存时间、随访时间</li>
+<li>高维变量：基因表达矩阵、蛋白组、影像特征</li>
+<li>数据矩阵的基本形式：</li>
+<li>样本 × 特征</li>
+<li>患者 × 临床指标</li>
+<li>细胞 × 基因</li>
+<li>图像 × 像素/特征</li>
+<li>数据质量问题：</li>
+<li>缺失值</li>
+<li>异常值</li>
+<li>批次效应</li>
+<li>类别不平衡</li>
+<li>测量误差</li>
+</ul>
+<p><strong>课堂练习</strong>给出一个临床数据表，让学生判断每一列的变量类型，并回答：</p>
+<ul>
+<li>哪些变量可以求均值？</li>
+<li>哪些变量适合做卡方检验？</li>
+<li>哪些变量适合进入 logistic regression？</li>
+<li>哪些变量需要标准化？</li>
+</ul>
+<p><strong>作业</strong>选择一个公开生物医学数据集，写出：</p>
+<ul>
+<li>数据来源</li>
+<li>样本数</li>
+<li>特征数</li>
+<li>主要变量类型</li>
+<li>可能的数据质量问题</li>
+</ul>
+<hr />
+<h2 id="3-a-zhang">第 3 讲a：高维数据与维度灾难 （zhang)</h2>
+<p><strong>主题</strong> 为什么生物医学数据经常“变量很多，样本很少”？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是高维数据？</li>
+<li>为什么高维会带来统计和机器学习困难？</li>
+<li>什么是维度灾难？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>高维数据例子：</li>
+<li>转录组：几万个基因</li>
+<li>蛋白组：几千个蛋白</li>
+<li>代谢组：数百到数千个代谢物</li>
+<li>医学影像：大量像素或深度特征</li>
+<li>单细胞数据：细胞数多、基因数多、噪声大</li>
+<li>维度灾难：</li>
+<li>样本之间距离变得不可靠</li>
+<li>模型容易记住训练数据</li>
+<li>统计检验数量急剧增加</li>
+<li>可视化困难</li>
+<li>噪声特征可能掩盖真实信号</li>
+<li>“大 p 小 n”问题：</li>
+<li>p = 特征数</li>
+<li>n = 样本数</li>
+<li>生物医学研究中常见 p &gt;&gt; n</li>
+</ul>
+<p><strong>课堂练习</strong>用二维、三维和高维模拟数据展示：</p>
+<ul>
+<li>距离分布如何随维度变化</li>
+<li>高维下最近邻和最远邻差异变小</li>
+<li>为什么高维数据更容易过拟合</li>
+</ul>
+<p><strong>作业</strong> 用自己的话解释：为什么“特征越多”不一定意味着“模型越好”？</p>
+<hr />
+<h2 id="3-bpca-umap-zhang">第 3 讲b：降维、PCA 与 UMAP (zhang)</h2>
+<p><strong>主题</strong> 如何把复杂高维数据压缩到可理解的低维空间？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>降维是为了可视化，还是为了建模？</li>
+<li>PCA 和 UMAP 有什么区别？</li>
+<li>如何避免过度解释降维图？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>降维目的：</li>
+<li>可视化</li>
+<li>去噪</li>
+<li>压缩特征</li>
+<li>发现样本结构</li>
+<li>作为后续建模输入</li>
+<li>PCA：</li>
+<li>线性降维</li>
+<li>最大化方差解释</li>
+<li>主成分</li>
+<li>explained variance</li>
+<li>loading 的含义</li>
+<li>UMAP：</li>
+<li>非线性降维</li>
+<li>更适合展示局部结构</li>
+<li>常用于单细胞和复杂表型数据</li>
+<li>PCA vs UMAP：</li>
+<li>PCA 更容易解释</li>
+<li>UMAP 更适合可视化复杂结构</li>
+<li>UMAP 图中的距离和簇不能过度解释</li>
+<li>常见错误：</li>
+<li>把 UMAP 上的簇直接当作生物学真相</li>
+<li>在全数据上先降维再交叉验证，导致信息泄露</li>
+<li>不做标准化就直接 PCA</li>
+</ul>
+<p><strong>课堂练习</strong>用一个 gene expression 或 clinical-feature 数据集：</p>
+<ul>
+<li>标准化数据</li>
+<li>做 PCA</li>
+<li>画 PC1 vs PC2</li>
+<li>做 UMAP</li>
+<li>比较两种图的差异</li>
+</ul>
+<p><strong>作业</strong>解释：</p>
+<ul>
+<li>PCA 第一主成分代表什么？</li>
+<li>为什么 PCA 前通常需要标准化？</li>
+<li>UMAP 图能说明什么，不能说明什么？</li>
+</ul>
+<hr />
+<h2 id="4-ji">第 4 讲：统计检验与假设设计 (ji)</h2>
+<p><strong>主题</strong> 科研问题如何转化为可检验的统计假设？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是 hypothesis test？</li>
+<li>什么是原假设和备择假设？</li>
+<li>什么是 Type I error 和 Type II error？</li>
+<li>如何选择合适的统计检验方法？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>假设检验基本框架：</li>
+<li>Null hypothesis, H0</li>
+<li>Alternative hypothesis, H1</li>
+<li>p-value</li>
+<li>significance level</li>
+<li>confidence interval</li>
+<li>Type I error：</li>
+<li>假阳性</li>
+<li>把没有差异判断成有差异</li>
+<li>Type II error：</li>
+<li>假阴性</li>
+<li>把真实差异判断成无差异</li>
+<li>Power：</li>
+<li>检出真实效应的能力</li>
+<li>与样本量、效应大小、噪声有关</li>
+<li>如何设计假说：</li>
+<li>从生物医学问题出发</li>
+<li>明确比较对象</li>
+<li>明确主要终点</li>
+<li>避免事后找显著性</li>
+<li>常见统计检验选择：</li>
+<li>t-test</li>
+<li>Mann–Whitney U test</li>
+<li>paired t-test</li>
+<li>Wilcoxon signed-rank test</li>
+<li>chi-square test</li>
+<li>Fisher’s exact test</li>
+<li>ANOVA</li>
+<li>correlation test</li>
+<li>linear regression</li>
+<li>logistic regression</li>
+</ul>
+<p><strong>课堂练习</strong>给出几个问题，让学生判断应使用什么统计方法：</p>
+<ol>
+<li>比较两组患者年龄是否不同</li>
+<li>比较治疗前后同一患者指标是否变化</li>
+<li>比较疾病组和对照组中性别比例是否不同</li>
+<li>检验某基因表达量是否与药物反应相关</li>
+<li>检验某指标是否预测是否患病</li>
+</ol>
+<p><strong>作业</strong>设计一个完整假设检验问题，包括：</p>
+<ul>
+<li>科学问题</li>
+<li>H0</li>
+<li>H1</li>
+<li>变量类型</li>
+<li>拟使用统计检验</li>
+<li>可能的混杂因素</li>
+</ul>
+<hr />
+<h2 id="5-ji">第 5讲：多重检验校正 (ji)</h2>
+<p><strong>主题</strong> 为什么做很多次检验时，p \&lt; 0.05 不再可靠？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是多重检验问题？</li>
+<li>为什么组学数据特别容易产生假阳性？</li>
+<li>FDR 和 Bonferroni 有什么区别？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>多重检验的来源：</li>
+<li>同时检验几千个基因</li>
+<li>同时比较多个临床指标</li>
+<li>多个亚组分析</li>
+<li>多个模型和多个终点</li>
+<li>为什么会产生假阳性：</li>
+<li>如果做 1000 次检验，即使没有真实差异，也可能出现约 50 个 p \&lt; 0.05</li>
+<li>常见校正方法：</li>
+<li>Bonferroni correction</li>
+<li>Benjamini–Hochberg FDR</li>
+<li>q-value</li>
+<li>何时使用哪种方法：</li>
+<li>Bonferroni 更严格，适合检验数量较少、错误代价高的场景</li>
+<li>FDR 更常用于组学数据和探索性研究</li>
+<li>显著性与生物学意义：</li>
+<li>p 值显著不等于效应大</li>
+<li>需要同时报告 effect size</li>
+<li>需要结合可重复性和机制解释</li>
+</ul>
+<p><strong>课堂练习</strong>模拟 1000 个随机基因表达数据，观察：</p>
+<ul>
+<li>未校正 p 值中有多少假阳性</li>
+<li>Bonferroni 后剩多少</li>
+<li>FDR 后剩多少</li>
+</ul>
+<p><strong>作业</strong>解释以下三个概念：</p>
+<ul>
+<li>p-value</li>
+<li>adjusted p-value</li>
+<li>false discovery rate</li>
+</ul>
+<hr />
+<h2 id="6-liu">第 6 讲：机器学习基础与朴素贝叶斯 (liu)</h2>
+<p><strong>主题</strong> 从统计检验走向预测模型。</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是数据模型？</li>
+<li>什么是训练、预测和泛化？</li>
+<li>什么是损失函数？</li>
+<li>如何评价一个模型？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>机器学习基本流程：</li>
+<li>数据输入</li>
+<li>特征</li>
+<li>标签</li>
+<li>训练集</li>
+<li>验证集</li>
+<li>测试集</li>
+<li>模型训练</li>
+<li>性能评估</li>
+<li>什么是数据模型：</li>
+<li>用数学函数描述输入和输出之间的关系</li>
+<li>例如：根据症状、检验指标预测疾病状态</li>
+<li>什么是损失：</li>
+<li>模型预测与真实标签之间的差距</li>
+<li>常见损失：cross-entropy, mean squared error</li>
+<li>模型评估：</li>
+<li>accuracy</li>
+<li>sensitivity</li>
+<li>specificity</li>
+<li>precision</li>
+<li>recall</li>
+<li>F1-score</li>
+<li>ROC-AUC</li>
+<li>PR-AUC</li>
+<li>calibration</li>
+<li>朴素贝叶斯：</li>
+<li>基于 Bayes theorem</li>
+<li>“朴素”假设：特征之间条件独立</li>
+<li>适合文本分类、简单医学分类任务</li>
+<li>优点与局限：</li>
+<li>简单、快速、可解释</li>
+<li>条件独立假设常常不完全成立</li>
+</ul>
+<p><strong>课堂练习</strong>用一个小型症状数据集训练朴素贝叶斯模型：</p>
+<ul>
+<li>输入：症状特征</li>
+<li>输出：是否患病</li>
+<li>计算 sensitivity 和 specificity</li>
+</ul>
+<p><strong>作业</strong> 解释为什么医学诊断模型不能只看 accuracy。</p>
+<hr />
+<h2 id="7lda-logistic-regression-liu">第 7讲：线性模型、LDA 与 Logistic Regression (liu)</h2>
+<p><strong>主题</strong> 简单模型为什么仍然重要？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是线性分类？</li>
+<li>LDA 和 logistic regression 有什么区别？</li>
+<li>为什么 logistic regression 在医学研究中非常常用？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>线性模型基本思想：</li>
+<li>用特征的加权和进行预测</li>
+<li>权重可以反映变量贡献</li>
+<li>LDA：</li>
+<li>假设不同类别服从高斯分布</li>
+<li>寻找区分类别的线性方向</li>
+<li>Logistic regression：</li>
+<li>输出概率</li>
+<li>常用于二分类医学问题</li>
+<li>odds ratio 的解释</li>
+<li>Linear regression vs logistic regression：</li>
+<li>linear regression 预测连续值</li>
+<li>logistic regression 预测类别概率</li>
+<li>医学中的应用：</li>
+<li>疾病风险预测</li>
+<li>预后分析</li>
+<li>生物标志物筛选</li>
+<li>注意事项：</li>
+<li>共线性</li>
+<li>特征标准化</li>
+<li>类别不平衡</li>
+<li>变量选择</li>
+<li>解释不能等同于因果</li>
+</ul>
+<p><strong>课堂练习</strong>用 clinical dataset 建立 logistic regression：</p>
+<ul>
+<li>划分训练集和测试集</li>
+<li>训练模型</li>
+<li>输出系数</li>
+<li>计算 AUC、sensitivity、specificity</li>
+<li>解释一个变量的方向和意义</li>
+</ul>
+<p><strong>作业</strong> 比较 LDA 和 logistic regression 的适用场景。</p>
+<h2 id="8-svm-margin-wang">第 8 讲：SVM 与 Margin (wang)</h2>
+<p><strong>主题</strong> 如何寻找一个“最稳健”的分类边界？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是 margin？</li>
+<li>为什么最大化 margin 有助于泛化？</li>
+<li>kernel trick 是什么？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>SVM 的基本思想：</li>
+<li>找到一个分类超平面</li>
+<li>最大化类别之间的 margin</li>
+<li>Margin：</li>
+<li>样本到分类边界的距离</li>
+<li>margin 越大，模型对扰动越稳健</li>
+<li>Support vectors：</li>
+<li>决定分类边界的关键样本</li>
+<li>Soft margin：</li>
+<li>允许少量分类错误</li>
+<li>通过参数 C 控制误差和 margin 的权衡</li>
+<li>Kernel：</li>
+<li>linear kernel</li>
+<li>polynomial kernel</li>
+<li>RBF kernel</li>
+<li>优点：</li>
+<li>适合中小样本</li>
+<li>在高维数据中表现好</li>
+<li>局限：</li>
+<li>参数敏感</li>
+<li>大数据上训练慢</li>
+<li>可解释性有限</li>
+</ul>
+<p><strong>课堂练习</strong>用二维模拟数据展示：</p>
+<ul>
+<li>不同 C 对分类边界的影响</li>
+<li>linear kernel 与 RBF kernel 的区别</li>
+<li>margin 如何变化</li>
+</ul>
+<p><strong>作业</strong> 用自己的话解释：为什么 SVM 不是简单地找一条“刚好分开两类”的线？</p>
+<hr />
+<h2 id="9-bootstrapping-wang">第 9讲：集成学习与 Bootstrapping (wang)</h2>
+<p><strong>主题</strong> 多个弱模型如何组合成更稳定的强模型？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是 ensemble learning？</li>
+<li>什么是 bootstrapping？</li>
+<li>Random Forest 和 boosting 的思想是什么？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>集成学习基本思想：</li>
+<li>多个模型共同投票或加权</li>
+<li>降低单一模型的不稳定性</li>
+<li>Bagging：</li>
+<li>bootstrap sampling</li>
+<li>多个模型并行训练</li>
+<li>Random Forest 是典型方法</li>
+<li>Bootstrapping：</li>
+<li>有放回抽样</li>
+<li>用于估计模型稳定性和不确定性</li>
+<li>Random Forest：</li>
+<li>多棵决策树</li>
+<li>随机选择样本</li>
+<li>随机选择特征</li>
+<li>Boosting：</li>
+<li>后一个模型关注前一个模型的错误</li>
+<li>例如 AdaBoost, Gradient Boosting, XGBoost</li>
+<li>优点：</li>
+<li>表现稳定</li>
+<li>能处理非线性关系</li>
+<li>对变量尺度不太敏感</li>
+<li>局限：</li>
+<li>可解释性下降</li>
+<li>容易被误用为“黑箱高性能模型”</li>
+<li>仍然需要严格验证</li>
+</ul>
+<p><strong>课堂练习</strong> 比较 logistic regression、SVM 和 random forest 在同一数据集上的表现。</p>
+<p><strong>作业</strong> 解释 bagging 和 boosting 的区别。</p>
+<hr />
+<h2 id="10-a-yu">第 10 讲a：欠过拟合的识别 (yu)</h2>
+<p><strong>主题</strong> 模型看起来很好，为什么可能是假的？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是过拟合？</li>
+<li>如何判断一个模型是否过拟合？</li>
+<li>生物医学研究中常见的信息泄露有哪些？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>过拟合定义：</li>
+<li>模型学习了训练数据中的噪声，而不是可泛化规律</li>
+<li>典型表现：</li>
+<li>训练集表现很好，测试集表现差</li>
+<li>交叉验证结果波动大</li>
+<li>外部数据集表现明显下降</li>
+<li>模型依赖少数异常样本</li>
+<li>常见原因：</li>
+<li>样本量太小</li>
+<li>特征太多</li>
+<li>模型太复杂</li>
+<li>数据泄露</li>
+<li>重复调参后只报告最好结果</li>
+<li>生物医学中的信息泄露：</li>
+<li>标准化在全数据上完成，而不是只在训练集上拟合</li>
+<li>特征选择在全数据上完成</li>
+<li>同一患者的多个样本同时出现在训练集和测试集</li>
+<li>测试集被反复用于调参</li>
+<li>数据增强前后样本分到不同集合</li>
+</ul>
+<p><strong>课堂练习</strong> 设计一个“错误流程”和一个“正确流程”，让学生比较模型性能差异。</p>
+<p><strong>作业</strong> 阅读一段机器学习方法描述，指出其中可能的信息泄露风险。</p>
+<hr />
+<h2 id="10-b-yu">第 10 讲b：过拟合的对抗：正则化与验证策略 （yu)</h2>
+<p><strong>主题</strong> 如何让模型更稳健、更可信？</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>什么是正则化？</li>
+<li>L1 和 L2 有什么区别？</li>
+<li>如何设计训练集、验证集和测试集？</li>
+<li>为什么外部验证很重要？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>防止过拟合的方法：</li>
+<li>增加样本量</li>
+<li>减少特征数量</li>
+<li>特征选择</li>
+<li>正则化</li>
+<li>交叉验证</li>
+<li>early stopping</li>
+<li>dropout</li>
+<li>数据增强</li>
+<li>外部验证</li>
+<li>正则化：</li>
+<li>L1 regularization</li>
+<li>L2 regularization</li>
+<li>Elastic Net</li>
+<li>L1：</li>
+<li>产生稀疏特征</li>
+<li>有助于变量选择</li>
+<li>L2：</li>
+<li>缩小权重</li>
+<li>提高稳定性</li>
+<li>验证策略：</li>
+<li>train/validation/test split</li>
+<li>k-fold cross-validation</li>
+<li>nested cross-validation</li>
+<li>external validation</li>
+<li>医学模型报告建议：</li>
+<li>不只报告平均性能</li>
+<li>报告置信区间或标准差</li>
+<li>报告 sensitivity 和 specificity</li>
+<li>报告校准情况</li>
+<li>说明数据划分方式</li>
+</ul>
+<p><strong>课堂练习</strong>对 logistic regression 分别加入 L1 和 L2 正则化，观察：</p>
+<ul>
+<li>系数变化</li>
+<li>特征数量变化</li>
+<li>测试集性能变化</li>
+</ul>
+<p><strong>作业</strong> 为一个小样本高维数据设计一个合理的验证方案。</p>
+<hr />
+<h2 id="11-ji">第 11 讲：生物医学问题建模与课程项目汇报 (ji)</h2>
+<p><strong>主题</strong> 从真实医学问题到可执行科研项目。</p>
+<p><strong>核心问题</strong></p>
+<ul>
+<li>如何把一个宽泛兴趣变成具体研究问题？</li>
+<li>如何定义输入、输出、基线模型和评价指标？</li>
+<li>如何写一个清楚、可执行的 research proposal？</li>
+</ul>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>生物医学建模基本流程：</li>
+<li>明确临床或生物学问题</li>
+<li>明确研究对象</li>
+<li>明确预测目标或解释目标</li>
+<li>明确数据来源</li>
+<li>明确变量和标签</li>
+<li>明确 baseline method</li>
+<li>明确 evaluation metrics</li>
+<li>明确可能偏倚和局限性</li>
+<li>明确结果如何解释</li>
+<li>研究问题示例：</li>
+<li>能否根据临床指标预测疾病风险？</li>
+<li>某些基因表达是否与治疗反应相关？</li>
+<li>影像特征能否辅助诊断？</li>
+<li>多组学数据是否提高预后预测能力？</li>
+<li>AI 模型是否能在外部数据集中保持性能？</li>
+<li>Baseline 的设计：</li>
+<li>简单统计模型</li>
+<li>logistic regression</li>
+<li>random forest</li>
+<li>文献已有方法</li>
+<li>临床常用评分</li>
+<li>生物医学建模中的特殊问题：</li>
+<li>数据偏倚</li>
+<li>标签噪声</li>
+<li>类别不平衡</li>
+<li>混杂因素</li>
+<li>可解释性</li>
+<li>外部验证</li>
+<li>临床可用性</li>
+</ul>
+<p><strong>课程项目要求</strong>学生完成一个小型项目或 proposal，包括：</p>
+<ol>
+<li>研究背景</li>
+<li>文献调研</li>
+<li>科学问题</li>
+<li>数据来源</li>
+<li>变量说明</li>
+<li>分析方法</li>
+<li>baseline model</li>
+<li>评价指标</li>
+<li>预期结果</li>
+<li>潜在局限性</li>
+<li>AI 工具使用说明</li>
+<li>可复现代码或分析流程</li>
+<li>最终展示</li>
+</ol>
+<p><strong>课堂活动</strong>每位学生做 5–8 分钟项目汇报，内容包括：</p>
+<ul>
+<li>我的问题是什么？</li>
+<li>为什么这个问题重要？</li>
+<li>数据是什么？</li>
+<li>我用什么方法？</li>
+<li>baseline 是什么？</li>
+<li>如何判断结果好不好？</li>
+<li>目前最大的不确定性是什么？</li>
+</ul></main></div>
+<footer>AI4BiomedicalDS · 课程计划</footer></body></html>
